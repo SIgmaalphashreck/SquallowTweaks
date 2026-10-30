@@ -1,0 +1,45 @@
+RISEN TWEAKS V2 – WINDOWS-EXE OHNE PYTHON AUF DEINEM PC
+========================================================
+
+WICHTIG
+Diese Projektdatei enthaelt einen GitHub-Actions-Workflow. GitHub baut damit
+RISEN_TWEAKS.exe auf einem Windows-Cloud-Rechner. Auf deinem eigenen PC musst
+du weder Python noch PyInstaller installieren.
+
+DU BRAUCHST
+- Einen GitHub-Account (kostenlos reicht fuer diesen Workflow normalerweise).
+- Einen Browser und Internet.
+
+SCHRITTE
+1. Melde dich bei https://github.com an.
+2. Erstelle ueber das Pluszeichen ein neues Repository, z. B. RISEN-TWEAKS.
+   Fuer private Nutzung kannst du das Repository auf Private setzen.
+3. Lade den Inhalt des Ordners RISEN_TWEAKS_V2 in das Repository hoch.
+   Wichtig: Behalte auch den Ordner .github/workflows und darin die Datei
+   build-windows.yml. GitHub muss diesen genauen Pfad sehen:
+       .github/workflows/build-windows.yml
+4. Committe die Dateien auf den Branch main.
+5. Oeffne im Repository den Tab Actions.
+6. Waehle links "Build RISEN TWEAKS for Windows".
+7. Klicke auf "Run workflow" und bestaetige mit dem gruenen Button.
+   (Ein Push auf main startet den Build ebenfalls automatisch.)
+8. Warte, bis der Lauf gruen/erfolgreich ist. Oeffne den abgeschlossenen Lauf.
+9. Unten bei Artifacts "RISEN_TWEAKS-Windows-EXE" herunterladen.
+10. ZIP entpacken und RISEN_TWEAKS.exe doppelklicken.
+
+ERGEBNIS
+Eine portable Windows-EXE. Python muss auf deinem PC nicht installiert sein.
+Die App kann bei Bedarf weiterhin Einstellungen unter %LOCALAPPDATA% speichern.
+
+HINWEISE
+- GitHub baut die EXE; es ist kein fertiges EXE-Binary in diesem Quellcode-ZIP.
+- Der Workflow verwendet Python nur auf dem Cloud-Build-Rechner.
+- Windows SmartScreen/Defender kann bei einer selbst gebauten, nicht signierten
+  EXE eine Warnung anzeigen. Das ist kein Beweis fuer Malware oder Sicherheit.
+  Fuehre die Datei nur aus, wenn du den Quellcode und Build kennst.
+- Artifact-Downloads sind bei GitHub Actions zeitlich begrenzt (hier 14 Tage).
+- Fuer spaetere Aenderungen an main.py kann der Workflow erneut ausgefuehrt werden.
+
+OPTIONALER LOKALER BUILD
+Wenn Python irgendwann doch installiert ist, kann build_exe.bat auf Windows
+verwendet werden. Das ist fuer den Cloud-Build nicht notwendig.

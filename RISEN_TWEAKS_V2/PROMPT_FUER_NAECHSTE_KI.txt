@@ -1,0 +1,100 @@
+DU BIST DER LEAD WINDOWS-DESKTOP-ENGINEER FÜR RISEN TWEAKS.
+
+PROJEKTZIEL
+Entwickle das vorhandene RISEN TWEAKS V2.0.0 zu einer wirklich professionellen Windows-Gaming-Optimization-Suite weiter. Die Referenz für das Aussehen ist reference_ui.png. Das Projekt soll optisch sehr nah an dieser Referenz bleiben: dunkles Charcoal-Theme, schmale linke Icon-Sidebar, oben zentrierter Seitentitel, große dunkle Gruppenfelder und breite abgerundete Aktionen in zwei Spalten. Du sollst den existierenden Code verbessern und nicht ohne Grund alles neu schreiben.
+
+ZUERST TUN
+1. Lies README_DE.txt, CHANGELOG.txt und die komplette main.py.
+2. Öffne reference_ui.png und vergleiche die aktuelle Oberfläche mit dem Screenshot.
+3. Erstelle einen kurzen technischen Plan, prüfe Abhängigkeiten und bestehende Features.
+4. Erhalte alle funktionierenden Features. Mach eine Sicherheitskopie, bevor du größere Refactors durchführst.
+5. Refactore main.py bei Bedarf in klare Module (ui, hardware, processes, tweaks, backup, network, config), ohne Features zu verlieren.
+
+HARTE ANFORDERUNGEN
+- Windows 10/11, Python 3.10+.
+- Die App muss auf dem echten Windows-PC funktionieren.
+- Keine Fake-Sensorwerte, Fake-FPS, Fake-Pingwerte, Fake-Benchmarks oder erfundenen Erkennungen.
+- Jede Änderung muss einen echten, überprüfbaren Effekt haben.
+- Jede dauerhafte Systemänderung braucht eine Beschreibung, ausdrückliche Bestätigung, Backup und Restore.
+- Keine pauschalen Registry-Cleaner, keine zufälligen Registry-Hacks.
+- Defender, Firewall, Windows Update, Secure Boot, UAC und Anti-Cheat niemals deaktivieren.
+- Niemals Fortnite-/EAC-/BattlEye-Schutz umgehen.
+- Niemals Prozesse automatisch oder im Hintergrund beenden.
+- Niemals CPU-Priorität REALTIME verwenden.
+- Keine pauschalen HPET-, MSI-Mode-, Nagle-, TCPAckFrequency-, NetworkThrottlingIndex-, Timer-Resolution- oder BCD-Hacks als angebliche FPS-/Ping-Booster.
+- Bei hardware-/treiberabhängigen Features N/A anzeigen, statt Werte zu erfinden.
+
+FEATURES FÜR V3
+A. HARDWARE MONITOR
+- CPU-Modell, Kerne/Threads, aktuelle Auslastung, Takt und Temperatur, falls zuverlässiger Sensor vorhanden.
+- GPU-Modell, Auslastung, VRAM, Temperatur, Takt, Leistungsaufnahme und Lüfterdrehzahl, sofern die offizielle Sensor-API sie liefert.
+- RAM-Auslastung, belegter/verfügbarer Speicher.
+- Alle physischen Laufwerke und Volumes, Belegung, Aktivität und SMART-/Gesundheitsstatus nur bei verfügbarer Quelle.
+- Mainboard, BIOS, Netzwerkadapter, Link-Speed, Display und Refresh-Rate.
+- Komponenten und Sensorwerte mit Zeitstempel und klarer Quelle.
+
+B. PROCESS MANAGER
+- Suche, Sortierung, CPU-, RAM-, Status- und – nur falls zuverlässig messbar – GPU/VRAM-Auslastung.
+- Systemkritische Prozesse schützen.
+- Beenden nur nach sichtbarer Bestätigung und mit nachvollziehbarer Fehlermeldung.
+
+C. FORTNITE COMPETITIVE CENTER
+- Fortnite-Erkennung und Prozess-Priorität nur zwischen NORMAL und HOCH.
+- Fortnite-Config-Backup vor jeder zukünftigen Config-Bearbeitung.
+- Netzwerk-Diagnose: Ping, Paketverlust, Jitter/Schwankung, DNS, Gateway, LAN-Link-Speed und Adapterstatus.
+- Deutlich zwischen allgemeinem ICMP-Ping und echtem Fortnite-Server-Ping unterscheiden.
+- Fortnite-Server-Ping nur aus einer verlässlichen Spiel-/Serverquelle anzeigen; niemals aus 1.1.1.1 ableiten.
+- Optional PresentMon/ETW-Integration prüfen, um reale Frametime- und 1%-Low-Daten zu erfassen. Nur integrieren, wenn Quelle, Lizenz und Installation nachvollziehbar sind.
+- Stabile FPS/Frametime priorisieren, nicht nur einen kurzfristigen Peak.
+
+D. GPU CENTER
+- NVIDIA- und AMD-Erkennung; passende Herstellerseite sichtbar machen.
+- Offizielle APIs/Tools für Sensoren nutzen.
+- NVIDIA Control Panel/AMD Adrenalin öffnen und erklären, welche Optionen pro Spiel sinnvoll geprüft werden können.
+- Keine automatische Treiberdeinstallation. Stattdessen sichere offizielle Neuinstallations-Anleitung.
+
+E. TWEAK LIBRARY
+- Pro Tweak: Zweck, betroffene Einstellung, erwartete Nebenwirkung, Neustartbedarf, Status, Backup-ID, Apply und Restore.
+- Vorhandene Tweaks Game Mode, Game DVR, VisualFX, Mausbeschleunigung und Power Plan korrekt erhalten.
+- Neue Tweaks nur einbauen, wenn sie dokumentiert, sinnvoll, reversibel und für Windows-Versionen getestet sind.
+- Tweak-Kategorien: Windows, GPU, CPU/Power, Input, Network, Fortnite, Cleanup.
+
+F. AUTOSTART & MAINTENANCE
+- Autostart-Programme anzeigen; danach nur mit Backup und Bestätigung einzeln deaktivierbar machen.
+- Temp-Bereinigung nur in freigegebenen Temp-Pfaden, gesperrte Dateien überspringen.
+- Windows-Tools und Geräte-Manager öffnen.
+- Logs, Systembericht und Backup-Management.
+
+G. UI / UX
+- UI am Referenz-Screenshot orientieren.
+- Sidebar-Icons mit verständlichen Tooltips.
+- Einheitliche Karten, gute Abstände, klare Typografie und Hover-Effekte.
+- Responsive Fenstergröße, Scrollbarkeit und korrekte Darstellung auf 1080p und 1440p.
+- Jede Aktion zeigt Ergebnis/Fehler eindeutig im UI.
+- Long-running tasks in Worker-Threads ausführen; UI darf nicht einfrieren.
+
+TESTS / ABNAHME
+1. Python-Syntax und Imports prüfen.
+2. Auf Windows 11 starten und alle Navigationsseiten öffnen.
+3. Hardwarewerte mit Task-Manager, Geräte-Manager und NVIDIA-SMI vergleichen.
+4. Prozesswerte plausibilisieren.
+5. Jede Registry-Änderung anwenden, App schließen/neu starten und Restore testen.
+6. Power-Plan ändern und Restore testen.
+7. Netzwerktest mit bekanntem Ziel ausführen und klar als allgemeiner Ping kennzeichnen.
+8. Fortnite nicht installiert/laufend testen: korrekte N/A-/Nicht-läuft-Zustände.
+9. Fortnite laufend testen: Priorität HOCH und NORMAL prüfen.
+10. Temp-Cleanup mit gesperrter Datei testen.
+11. Start ohne Administratorrechte und – wo sinnvoll – mit Administratorrechten testen.
+12. EXE mit PyInstaller auf Windows bauen und auf sauberem Windows-Konto starten.
+
+LIEFERUMFANG
+- Vollständiger, aufgeräumter Quellcode.
+- requirements.txt mit festgelegten kompatiblen Versionen.
+- start.bat und build_exe.bat.
+- README_DE.md mit Installation, Funktionen, Risiken und Wiederherstellung.
+- Changelog.
+- Tests oder zumindest nachvollziehbare Testprotokolle.
+- RISEN_TWEAKS.exe (auf Windows erzeugen) und vollständiges ZIP.
+
+WICHTIGER ARBEITSSTIL
+Arbeite die Features wirklich fertig. Ersetze keine Implementierung durch Platzhalter. Sage ehrlich, was du auf deinem System nicht testen konntest. Bevor du fertig bist, starte die Anwendung, prüfe Fehler und kontrolliere jede Schaltfläche. Wenn eine Funktion technisch nicht sicher oder nicht zuverlässig möglich ist, erkläre die Einschränkung und lasse sie deaktiviert, statt eine Fake-Funktion einzubauen.

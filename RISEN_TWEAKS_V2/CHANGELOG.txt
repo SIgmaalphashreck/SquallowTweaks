@@ -1,0 +1,13 @@
+RISEN TWEAKS V2.0.0
+- Neue dunkle Oberfläche mit schmaler Icon-Seitenleiste und großen Gruppen-/Aktionenkarten.
+- Seiten für Home, Windows Tweaks, Performance, Cleanup, GPU Optimization, Fortnite,
+  Processes, Hardware und Tools.
+- Hardware-Erkennung über Windows CIM/PowerShell und psutil.
+- NVIDIA-SMI Telemetrie, wenn Treiber und Tool verfügbar sind.
+- Prozesssuche, CPU-/RAM-Sortierung und bestätigtes Beenden ausgewählter Prozesse.
+- Fortnite-Priorität HOCH/NORMAL, Config-Ordner, Epic Launcher und Netzwerkdiagnose.
+- Sichere, gesicherte Benutzer-Registry-Tweaks: Game Mode, Game DVR, VisualFXSetting,
+  Windows-Mausbeschleunigung.
+- Energieplanwechsel mit Sicherung des vorherigen Plans.
+- Temp-Cleanup, DNS-Cache, Autostart-Übersicht, Geräteübersicht, Systembericht.
+- Restore-Funktion für gespeicherte Registry-Werte und Energieplan.
